@@ -40,10 +40,24 @@ The criteria can be derived from the equation of sum of the radius of two circle
 
 ![Image](https://github.com/arunshar/RendezvousDetection/blob/main/images/Intersection_Criteria.png)
 
+Given two segments a (start point 1 and end point 2) and b (start point 3 and end point 4) each with speed, timeStart, and timeEnd.
+
+If both a and b are measured from start point 1 (a.timeStart) and 3 (b.timeStart) at time instant t, then:
+
+a.speed*(t - a.timeStart) + b.speed*(t - a.timeStart) >= d13, where t > timeStart and d13 is distance between the centers of a and b.
+
+t * (-a.speed - b.speed) >= d13 + a.timeStart * a.speed + b.timeStart * b.speed.
+
+t <= (d13 + a.timeStart * a.speed + b.timeStart * b.speed)/ (a.speed + b.speed).
+
+Similar operations are done for (1 (a.timeStart) and 4 (b.timeEnd)), (2 (a.timeEnd) and 3 (a.timeStart)), and (2 (a.timeEnd) and 4 (a.timeEnd)).
+
+If all conditions are satisfied then beads are guaranteed to be intersected.
 
 ## Implementation Details
 
-Main.java: 
+Run Main.java to run the overall code.
+
 
 
 ## Code
