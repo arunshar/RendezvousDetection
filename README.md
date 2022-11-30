@@ -57,13 +57,13 @@ If all four conditions are satisfied then beads are guaranteed to be intersected
 ## Code
 
 For implementation, please refer to java files [here](https://github.com/arunshar/RendezvousDetection/tree/main/src/rendezvous).
+Input Data details can be found [here](https://github.com/arunshar/RendezvousDetection/blob/main/gaps_tsrelative_t30_noNoise.csv).
 
 A brief description for each java file are as follows:
 
 	1. Main.java: For Running the overall code.
 
 	2. FilePathsandParameters: Input, Output and maxspeed.
-		Input Data details can be found [here](https://github.com/arunshar/RendezvousDetection/blob/main/gaps_tsrelative_t30_noNoise.csv) 
 
 	3. MissingSegment.java: Stores segments metadata (e.g., latX, longX, latY, longY, timeStart, timeEnd, speed etc.)
 
