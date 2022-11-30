@@ -22,10 +22,12 @@ A candidate active volume (CAV) or Bead (in one Dimension) is the spatio-tempora
  We use the plane sweep algorithm for extracting gaps. It is a filter and refine approach where the given study area is projected into a lower-dimensional space. In the filtering phase, all gaps are sorted based on x or y coordinate. Ordering on one dimension reduces the storage and I/O cost, and further allows the computation of intersections in a single pass. In the refinement phase, the gaps are extracted based on the start time and end time of their respective effective missing periods (EMPs). The segments are further approximated using MOBRs over each candidate active volume (CAV). The following text describes the algorithm in detail.
 
 Step 1: Sort the endpoints of all the effective missing periods (EMPs)
-First, we sort the endpoints of all EMPs based on one of the coordinates. An endpoint is represented by three coordinates, namely x, y, and time, and either x or y can be the sorting coordinate. For consistency, We use x dimension in the code 
+First, we sort the endpoints of all EMPs based on one of the coordinates. An endpoint is represented by three coordinates, namely x, y, and time, and either x or y can be the sorting coordinate. For consistency, We use x dimension in the code.
 
 Step 2: A plane orthogonal to the x-axis sweeps along the sorted EMPs
+
 The second step conducts the sweeping.
+
 Imagine there is a plane parallel to the y-t plane and orthogonal to the x-axis sweeping from the low to the high end along x-axis. The sweeping plane stops at both start and end endpoints of each EMP. Note that  start and end refer to the order of sweeping, which is irrelevant to the temporal dimension.
 
 ![Image](https://github.com/arunshar/RendezvousDetection/blob/main/images/Intersections.png)
