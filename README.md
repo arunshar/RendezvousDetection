@@ -26,7 +26,7 @@ First, we sort the endpoints of all EMPs based on one of the coordinates. An end
 
 Step 2: A plane orthogonal to the x-axis sweeps along the sorted EMPs
 The second step conducts the sweeping.
-Imagine there is a plane parallel to the y-t plane and orthogonal to the x-axis sweeping from the low to the high end along x-axis. The sweeping plane stops at both start and end endpoints of each EMP. Note that  start and end refer to the order of sweeping, which is irrelevant to the temporal dimension. An Observed Object List is maintained to store CAVs being currently crossed by the sweeping plane.
+Imagine there is a plane parallel to the y-t plane and orthogonal to the x-axis sweeping from the low to the high end along x-axis. The sweeping plane stops at both start and end endpoints of each EMP. Note that  start and end refer to the order of sweeping, which is irrelevant to the temporal dimension.
 
 ![Image](https://github.com/arunshar/RendezvousDetection/blob/main/images/Intersections.png)
 
@@ -40,7 +40,7 @@ The criteria can be derived from the equation of sum of the radius of two circle
 
 ![Image](https://github.com/arunshar/RendezvousDetection/blob/main/images/Intersection_Criteria.png)
 
-Given two segments a (start point 1 and end point 2) and b (start point 3 and end point 4) each with speed, timeStart, and timeEnd.
+Given two segments a (start point 1 and end point 2) and b (start point 3 and end point 4) each with speed, timeStart, and timeEnd. We are 
 
 If both a and b are measured from start point 1 (a.timeStart) and 3 (b.timeStart) at time instant t, then:
 
@@ -52,16 +52,29 @@ t <= (d13 + a.timeStart * a.speed + b.timeStart * b.speed)/ (a.speed + b.speed).
 
 Similar operations are done for (1 (a.timeStart) and 4 (b.timeEnd)), (2 (a.timeEnd) and 3 (a.timeStart)), and (2 (a.timeEnd) and 4 (a.timeEnd)).
 
-If all conditions are satisfied then beads are guaranteed to be intersected.
-
-## Implementation Details
-
-Run Main.java to run the overall code.
-
-
+If all four conditions are satisfied then beads are guaranteed to be intersected.
 
 ## Code
 
 For implementation, please refer to java files [here](https://github.com/arunshar/RendezvousDetection/tree/main/src/rendezvous).
 
-Input Data details can be found [here](https://github.com/arunshar/RendezvousDetection/blob/main/gaps_tsrelative_t30_noNoise.csv) 
+A brief description for each java file are as follows:
+
+	1. Main.java: For Running the overall code.
+
+	2. FilePathsandParameters: Input, Output and maxspeed.
+		Input Data details can be found [here](https://github.com/arunshar/RendezvousDetection/blob/main/gaps_tsrelative_t30_noNoise.csv) 
+
+	3. MissingSegment.java: Stores segments metadata (e.g., latX, longX, latY, longY, timeStart, timeEnd, speed etc.)
+
+	4. MissingSegmentEndPoint.java: Stores information based on end points of the missing segment (e.g., missingsegment id, StartLong). 
+		This helps plane sweep to recognize if the given point is start or end point of a given segment.
+
+	5. BeadIntersection.java: Defined and implemented Bead Intersection Criteria
+
+	6. BaselinePlaneSweepApproach.java: Implemeneted Plane Sweep Algorithm
+
+	7. DataReading.java: Parse input and save as Missing Segment object.
+
+	8. Utilities.java: Calculating geographic distance between two points.
+
