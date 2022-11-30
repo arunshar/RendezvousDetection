@@ -13,7 +13,7 @@ An object maximum speed (Smax) is the maximum speed of an object 1 based on the 
 
 An effective missing period (EMP) or MissingSegment is a time period when the signal is missing for longer than a user-specified EMP threshold (θe). As shown in Figure 1 the EMPs for Object 1 and Object 2 is between timestamps 3 and 4, Here, we assume θe = 2.
 
-A candidate active volume (CAV) or Bead (in one Dimension) is the spatio-temporal volume where an object is possibly located during an EMP. A CAV is based on a space time prism using conical shape and is derived from an EMP. The 1D representation of conical intersection of 
+A candidate active volume (CAV) or Bead (in one Dimension) is the spatio-temporal volume where an object is possibly located during an EMP. A CAV is based on a space time prism using conical shape and is derived from an EMP.
 
 <!-- ![Image](https://github.com/arunshar/Distributed-Systems/blob/master/GroupMessenger2/images/ISIS_Algorithm_Working.gif) -->
 ![Image](https://github.com/arunshar/RendezvousDetection/blob/main/images/CAV_and_Bead.png)
@@ -30,9 +30,7 @@ Imagine there is a plane parallel to the y-t plane and orthogonal to the x-axis 
 
 ![Image](https://github.com/arunshar/RendezvousDetection/blob/main/images/Intersections.png)
 
-Figure above shows a dataset contains EMPs and their corresponding CAVs (or Beads) from four objects. We simplify the study area into onedimensional for illustrative purpose. A vertical line sweeps from left to right and stops at the endpoints (from a to h) of each EMP. The table on the right shows the elements in the observed object list after each stop. For example, when stopping at Line d (start of 4), the algorithm determines whether the incoming EMP<4> intersects with each element in the observed object list, namely
-<1>, <2>, <1,2>, <3>, <1,3>, <2,3>, and <1,2,3>. Among those, since EMP <2> intersects with <4>, <4> and <2, 4> are added to the list. Also, < 2, 4 > is added to the output
-list as well. When stopping at Line e (end of 1), the algorithm removes all the elements in the list involving EMP 1 including <1>, <1,2>, <1,3>, and <1,2,3>. After that, the elements left are <2>, <3>, <2, 3>, <4>, and <2, 4>. The last stop is at Line h (end of 4). The Observed Object List becomes empty and the final output STIs include: <1, 2>, <1, 3>, <2, 3>, <1, 2, 3>, and <2, 4>.
+Figure above shows a dataset contains EMPs and their corresponding CAVs (or Beads) from four objects. We simplify the study area into onedimensional for illustrative purpose. A vertical line sweeps from left to right and stops at the endpoints (from a to h) of each EMP. The table on the right shows the elements in the observed object list after each stop. For example, when stopping at Line d (start of 4), the algorithm determines whether the incoming EMP<4> intersects with each element in the observed object list, namely <1>, <2>, <1,2>, <3>, <1,3>, <2,3>, and <1,2,3>. Among those, since EMP <2> intersects with <4>, <4> and <2, 4> are added to the list. Also, < 2, 4 > is added to the output list as well. When stopping at Line e (end of 1), the algorithm removes all the elements in the list involving EMP 1 including <1>, <1,2>, <1,3>, and <1,2,3>. After that, the elements left are <2>, <3>, <2, 3>, <4>, and <2, 4>. The last stop is at Line h (end of 4). The Observed Object List becomes empty and the final output STIs include: <1, 2>, <1, 3>, <2, 3>, <1, 2, 3>, and <2, 4>.
 
 ### Bead Intersection Criteria
 
