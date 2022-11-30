@@ -17,8 +17,7 @@ public class BeadIntersection {
     double startTime = 0;
     double endTime = 0;
     boolean ifOutput = false; // used for labeling if we output this CR
-    //double centerLonX = 0;
-    //double centerLatY = 0;
+
 
     public TimeRange twoMSIntersect (MissingSegment a, MissingSegment b) {
         // if two beads intersect, return the time range.
@@ -32,13 +31,11 @@ public class BeadIntersection {
 
         double timeMin = Math.max(a.timeStart, b.timeStart);
         double timeMax = Math.min(a.timeEnd, b.timeEnd);
-        //System.out.println("timeMin = " + timeMin + ", timeMax = " + timeMax);
 
         double d13 = Utilities.distanceTwoPoints(a.latYStart, a.lonXStart, b.latYStart, b.lonXStart);
         double d24 = Utilities.distanceTwoPoints(a.latYEnd, a.lonXEnd, b.latYEnd, b.lonXEnd);
         double d14 = Utilities.distanceTwoPoints(a.latYStart, a.lonXStart, b.latYEnd, b.lonXEnd);
         double d23 = Utilities.distanceTwoPoints(a.latYEnd, a.lonXEnd, b.latYStart, b.lonXStart);
-        //System.out.println(d13+", "+d24+", "+d14 + "," + d23);
 
         if (a.speed > b.speed) {
             double cond1 = (d13 + a.timeStart * a.speed + b.timeStart * b.speed) / (a.speed + b.speed);
@@ -62,10 +59,9 @@ public class BeadIntersection {
         else { // a.speed = b.speed
 
             if ( ((b.timeEnd - a.timeStart) * a.speed >= d14) && (a.timeEnd - b.timeStart) * a.speed >= d23 ) {
-                //System.out.println((b.timeEnd - a.timeStart) * a.speed + ", " + (a.timeEnd - b.timeStart) * a.speed);
+
                 timeMin = Math.max(timeMin, (d13 + a.timeStart * a.speed + b.timeStart * b.speed) / (a.speed + b.speed));
                 timeMax = Math.min(timeMax, (d24 - a.timeEnd * a.speed - b.timeEnd * b.speed) / (-a.speed - b.speed));
-                //System.out.println("timeMin = " + timeMin + ", timeMax = " + timeMax);
             }
             else { // just to create a case where timeMin > timeMax
                 timeMin = 1;
@@ -83,8 +79,6 @@ public class BeadIntersection {
         this.msInvolvedList = new ArrayList<>();
         this.startTime = 0;
         this.endTime = 0;
-        //centerLonX = 0;
-        //centerLatY = 0;
     }
 
     public BeadIntersection (MissingSegment a) {
@@ -93,8 +87,7 @@ public class BeadIntersection {
         this.msInvolvedList.add(a);
         this.startTime = a.timeStart;
         this.endTime = a.timeEnd;
-        //this.centerLonX = a.lonXStart + (a.lonXEnd - a.lonXStart) / 2;
-        //this.centerLatY = a.latYStart + (a.latYStart - a.latYEnd) / 2;
+
     }
 
     // a heuristic that determines when and where two beads intersect
@@ -162,24 +155,6 @@ public class BeadIntersection {
         this.msInvolvedList = new ArrayList<>();
         double startTime = 0;
         double endTime = 0;
-        // the following if is just for debugging
-//		if ( (b.startTime <= a.timeStart && a.timeStart <= b.endTime) || (b.startTime <= a.timeEnd && a.timeEnd <= b.endTime) ) {
-//
-//			for (int i = 0; i < b.msInvolvedList.size(); i++) { // this loops checks if b includes the ship of a
-//				if (a.mmsi.equals(b.msInvolvedList.get(i).mmsi)) {
-//					return null;
-//				}
-//			}
-//
-//			// a new BI is generated
-//			BeadIntersection largerBI = new BeadIntersection();
-//			largerBI.startTime = Math.max(a.timeStart, b.startTime);
-//			largerBI.endTime = Math.min(a.timeEnd, b.endTime);
-//			largerBI.msInvolvedList = new ArrayList<MissingSegment>(b.msInvolvedList);
-//			largerBI.msInvolvedList.add(a);
-//			System.out.println("size = " + largerBI.msInvolvedList.size());
-//			return largerBI;
-//		}
 
         //check the intersection time of a and b
         if ( (b.startTime <= a.timeStart && a.timeStart <= b.endTime) || (b.startTime <= a.timeEnd && a.timeEnd <= b.endTime) ) {

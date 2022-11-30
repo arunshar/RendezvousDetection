@@ -96,18 +96,6 @@ public class DataReading {
             resultSet.add(originalLineList.get(missingSegmentEndPointList.get(i).lineCount));
         }
 
-//        BufferedWriter bwww = new BufferedWriter(new FileWriter("/Users/arunsharma/Desktop/xxxx.txt"));
-//        for (String output : resultSet) {
-//            bwww.write(output + "\n");
-//        }
-//        bwww.close();
-
-//		// verify if sorted
-//		for (int i = 0; i < missingSegmentEndPointList.size() - 1; i++) {
-//			if (missingSegmentEndPointList.get(i).lonX > missingSegmentEndPointList.get(i+1).lonX) {
-//				System.out.println("not sorted!");
-//			}
-//		}
 
     }
 
